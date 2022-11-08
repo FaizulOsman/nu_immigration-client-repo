@@ -1,11 +1,17 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import useTitle from "../customHooks/useTitle";
 
 const Register = () => {
   const { createUser, googleSignIn, githubSignIn, updateUserProfile, logOut } =
     useContext(AuthContext);
+  useTitle("Register");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +51,7 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         toast.success("Successfully Logged in with Google");
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.log(e);
@@ -58,6 +65,7 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         toast.success("Successfully Logged in with Github");
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.log(e);

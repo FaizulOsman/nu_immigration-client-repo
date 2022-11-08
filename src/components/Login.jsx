@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import useTitle from "../customHooks/useTitle";
 
 const Login = () => {
   const { logIn, githubSignIn, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  useTitle("Login");
 
   const from = location.state?.from?.pathname || "/";
 
@@ -22,6 +24,7 @@ const Login = () => {
         console.log(user);
         toast.success("Successfully logged in, Keep Going");
         form.reset();
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.error(e);
@@ -35,6 +38,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         toast.success("Successfully Logged in with Google");
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.log(e);
@@ -48,6 +52,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         toast.success("Successfully Logged in with Github");
+        navigate(from, { replace: true });
       })
       .catch((e) => {
         console.log(e);

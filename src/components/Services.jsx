@@ -2,9 +2,11 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import useTitle from "../customHooks/useTitle";
 
 const Services = () => {
   const services = useLoaderData();
+  useTitle("Services");
 
   return (
     <div className="w-11/12 mx-auto my-20">

@@ -2,11 +2,13 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import useTitle from "../customHooks/useTitle";
 import Carousel from "./Carousel";
 import WelcomeSection from "./WelcomeSection";
 
 const Home = () => {
   const threeservices = useLoaderData();
+  useTitle("Home");
 
   return (
     <div className="">
