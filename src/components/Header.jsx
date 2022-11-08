@@ -83,6 +83,16 @@ const Header = () => {
           </li>
         </>
       )}
+      <li>
+        <Link
+          to="/blog"
+          className="text-lg p-3 font-bold group transition-all duration-300 ease-in-out"
+        >
+          <span className="bg-left-bottom bg-gradient-to-r from-red-600 to-red-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+            Blog
+          </span>
+        </Link>
+      </li>
     </>
   );
 

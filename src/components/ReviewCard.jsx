@@ -1,4 +1,8 @@
-import { faStar, faUser } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPenToSquare,
+  faStar,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -30,12 +34,20 @@ const ReviewCard = ({ review, handleDeleteReview }) => {
                 <p className="text-md font-semibold text-gray-500">{email}</p>
               </div>
             </div>
-            <Link
-              onClick={() => handleDeleteReview(review)}
-              className="btn btn-circle bg-red-600 hover:bg-red-700 border-none"
-            >
-              X
-            </Link>
+            <div className="flex md:flex-row flex-col items-center gap-4">
+              <Link
+                onClick={() => handleDeleteReview(review)}
+                className="bg-red-600 hover:bg-red-700 cursor-pointer rounded-full px-2 text-white"
+              >
+                X
+              </Link>
+              <Link
+                onClick={() => handleDeleteReview(review)}
+                className="text-primary text-xl"
+              >
+                <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
+              </Link>
+            </div>
           </div>
           <h4 className="text-xl font-bold text-center text-primary">
             {title}
