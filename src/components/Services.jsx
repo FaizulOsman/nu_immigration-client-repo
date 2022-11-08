@@ -28,13 +28,13 @@ const Services = () => {
                     ></FontAwesomeIcon>
                   </div>
                 </h2>
-                <p>{service?.description.slice(0, 100)} ...</p>
+                <p>{service?.description.slice(0, 99)} ...</p>
                 <div className="card-actions justify-between">
                   <div className="font-bold text-yellow-500">
                     ${service?.cost}
                   </div>
                   <Link
-                    to={`/service/${service?._id}`}
+                    to={`/services/${service?._id}`}
                     className="badge badge-outline"
                   >
                     Details
