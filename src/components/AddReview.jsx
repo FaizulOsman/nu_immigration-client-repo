@@ -37,6 +37,7 @@ const AddReview = () => {
       realTime,
       serviceId,
       text,
+      title,
     };
 
     fetch(`http://localhost:5000/reviews`, {
