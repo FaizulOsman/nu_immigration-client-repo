@@ -36,7 +36,10 @@ const SingleService = () => {
                 icon={faStar}
               ></FontAwesomeIcon>
             </p>
-            <Link to={`/addreview/${_id}`} className="badge badge-outline">
+            <Link
+              to={`/addreview/${_id}`}
+              className="badge badge-outline btn-secondary p-4"
+            >
               Review
             </Link>
           </div>
