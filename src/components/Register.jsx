@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Register = () => {
-  const { createUser, googleSignIn } = useContext(AuthContext);
+  const { createUser, googleSignIn, githubSignIn, updateUserProfile, logOut } =
+    useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.fullName.value;
-    const image = form.image.value;
+    const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
 
@@ -18,11 +19,22 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Successfully Registered");
-        form.reset();
+        // Update User Profile!
+        updateUserProfile(name, photoURL)
+          .then(() => {
+            form.reset();
+            logOut()
+              .then(() => {})
+              .catch((e) => console.log(e));
+            toast.success("Successfully Registered, Please Login");
+          })
+          .catch((e) => {
+            console.log(e);
+            toast.error("Something went wrong!");
+          });
       })
       .catch((e) => {
-        console.error(e);
+        console.log(e);
         toast.error("Something went wrong!");
       });
   };
@@ -32,7 +44,20 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Successfully Registered");
+        toast.success("Successfully Logged in with Google");
+      })
+      .catch((e) => {
+        console.log(e);
+        toast.error("Something went wrong!");
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully Logged in with Github");
       })
       .catch((e) => {
         console.log(e);
@@ -46,7 +71,9 @@ const Register = () => {
         <div className="card-body">
           <form onSubmit={handleSubmit} className="">
             <div className="">
-              <h1 className="text-4xl font-bold mb-5">Register</h1>
+              <h1 className="text-4xl text-primary text-center font-bold mb-5">
+                Register
+              </h1>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="form-control mb-5">
                   <label className="label">
@@ -57,6 +84,7 @@ const Register = () => {
                     name="fullName"
                     placeholder="Full Name"
                     className="input input-bordered"
+                    required
                   />
                 </div>
                 <div className="form-control mb-5">
@@ -65,9 +93,10 @@ const Register = () => {
                   </label>
                   <input
                     type="text"
-                    name="image"
-                    placeholder="Image URL"
+                    name="photoURL"
+                    placeholder="Photo URL"
                     className="input input-bordered"
+                    required
                   />
                 </div>
               </div>
@@ -80,6 +109,7 @@ const Register = () => {
                   name="email"
                   placeholder="Email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -91,12 +121,16 @@ const Register = () => {
                   name="password"
                   placeholder="Password"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <p>
                 <small>
                   Already have an account?{" "}
-                  <Link to="/login" className="underline text-primary">
+                  <Link
+                    to="/login"
+                    className="underline  text-primary hover:text-secondary"
+                  >
                     Please Login
                   </Link>
                 </small>
@@ -110,12 +144,18 @@ const Register = () => {
               </div>
             </div>
           </form>
-          <div className="my-5">
+          <div className="my-3">
             <button
               onClick={handleGoogleSignIn}
-              className="btn btn-outline w-full"
+              className="btn btn-outline btn-info w-full"
             >
               Google
+            </button>
+            <button
+              onClick={handleGithubSignIn}
+              className="btn btn-outline mt-5 w-full"
+            >
+              Github
             </button>
           </div>
         </div>

@@ -17,7 +17,7 @@ const WelcomeSection = () => {
         <h5 className="text-md font-semibold border-b-2 w-64 text-gray-500">
           WELCOME TO NU-IMMIGRATION
         </h5>
-        <h2 className="text-3xl lg:text-5xl text-[#003760] font-bold mt-5 mb-8">
+        <h2 className="text-3xl lg:text-5xl text-primary font-bold mt-5 mb-8">
           Welcome to immigration{" "}
           <span className="text-red-600 italic">Advisory</span> services
         </h2>

@@ -1,3 +1,5 @@
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
@@ -89,11 +91,18 @@ const Header = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img
-                  src="https://placeimg.com/80/80/people"
-                  title={user?.uid ? `${user?.email}` : `User name not found`}
-                  alt="img"
-                />
+                {user?.photoURL ? (
+                  <img
+                    src={user?.photoURL}
+                    title={user?.uid ? `${user?.email}` : `User name not found`}
+                    alt="img"
+                  />
+                ) : (
+                  <FontAwesomeIcon
+                    className="h-full"
+                    icon={faUser}
+                  ></FontAwesomeIcon>
+                )}
               </div>
             </label>
             <ul

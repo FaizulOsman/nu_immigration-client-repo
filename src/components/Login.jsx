@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Login = () => {
-  const { logIn, logOut, googleSignIn } = useContext(AuthContext);
+  const { logIn, githubSignIn, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -15,12 +15,12 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-
+    // Login with Email and Password
     logIn(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-
+        toast.success("Successfully logged in, Keep Going");
         form.reset();
       })
       .catch((e) => {
@@ -28,13 +28,26 @@ const Login = () => {
         toast.error("Something went wrong");
       });
   };
-
+  // Google Sign In
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Successfully Registered");
+        toast.success("Successfully Logged in with Google");
+      })
+      .catch((e) => {
+        console.log(e);
+        toast.error("Something went wrong!");
+      });
+  };
+  // Github Sign In
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Successfully Logged in with Github");
       })
       .catch((e) => {
         console.log(e);
@@ -47,16 +60,19 @@ const Login = () => {
       <div className="card-body">
         <form onSubmit={handleSubmit} className="">
           <div className="">
-            <h1 className="text-4xl font-bold mb-5">Login</h1>
+            <h1 className="text-4xl text-primary text-center font-bold mb-5">
+              Login
+            </h1>
             <div className="form-control mb-5">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 placeholder="Email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -64,16 +80,20 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Password"
                 className="input input-bordered"
+                required
               />
             </div>
             <p>
               <small>
                 Don't have an account?{" "}
-                <Link to="/register" className="underline text-primary">
+                <Link
+                  to="/register"
+                  className="underline text-primary hover:text-secondary"
+                >
                   Please Register
                 </Link>
               </small>
@@ -87,12 +107,18 @@ const Login = () => {
             </div>
           </div>
         </form>
-        <div className="my-5">
+        <div className="my-3">
           <button
             onClick={handleGoogleSignIn}
-            className="btn btn-outline w-full"
+            className="btn btn-outline btn-info w-full"
           >
             Google
+          </button>
+          <button
+            onClick={handleGithubSignIn}
+            className="btn btn-outline mt-5 w-full"
+          >
+            Github
           </button>
         </div>
       </div>

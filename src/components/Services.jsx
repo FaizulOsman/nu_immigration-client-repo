@@ -11,7 +11,7 @@ const Services = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service) => (
           <div key={service?._id}>
-            <div className="card bg-base-100 shadow-xl">
+            <div className="card hover:-mt-6 hover:z-20 duration-200 h-full bg-base-100 shadow-xl">
               <figure>
                 <img src={service?.image} alt="Shoes" />
               </figure>
@@ -43,6 +43,14 @@ const Services = () => {
           </div>
         ))}
       </div>
+      <button className="btn btn-primary">Hello</button>
+      <button className="btn btn-secondary">Hello</button>
+      <button className="btn btn-accent">Hello</button>
+      <button className="btn btn-neutral">Hello</button>
+      <button className="btn btn-info">Hello</button>
+      <button className="btn btn-success">Hello</button>
+      <button className="btn btn-warning">Hello</button>
+      <button className="btn btn-error">Hello</button>
     </div>
   );
 };

@@ -13,14 +13,18 @@ const SingleService = () => {
           <img src={image} alt="" />
         </div>
         <div className="">
-          <h3 className="text-2xl font-bold text-primary">{title}</h3>
+          <h3 className="text-3xl font-bold text-[#086092]">{title}</h3>
           <p className="text-md my-5 text-gray-500">{description}</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 justify-between">
+          <div className="flex justify-between">
             <h4 className="font-bold">${cost}</h4>
-            <p>
-              {rating} <FontAwesomeIcon icon={faStar}></FontAwesomeIcon>
+            <p className="font-semibold">
+              {rating}{" "}
+              <FontAwesomeIcon
+                className="text-orange-400"
+                icon={faStar}
+              ></FontAwesomeIcon>
             </p>
-            <Link>Review</Link>
+            <Link className="badge badge-outline">Review</Link>
           </div>
         </div>
       </div>
