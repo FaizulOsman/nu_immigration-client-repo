@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, handleDeleteReview }) => {
   const {
     email,
     text,
@@ -39,7 +39,10 @@ const ReviewCard = ({ review }) => {
                 <p className="text-md font-semibold text-gray-500">{email}</p>
               </div>
             </div>
-            <Link className="btn btn-circle bg-red-600 hover:bg-red-700 border-none">
+            <Link
+              onClick={() => handleDeleteReview(review)}
+              className="btn btn-circle bg-red-600 hover:bg-red-700 border-none"
+            >
               X
             </Link>
           </div>
