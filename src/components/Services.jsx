@@ -45,14 +45,6 @@ const Services = () => {
           </div>
         ))}
       </div>
-      <button className="btn btn-primary">Hello</button>
-      <button className="btn btn-secondary">Hello</button>
-      <button className="btn btn-accent">Hello</button>
-      <button className="btn btn-neutral">Hello</button>
-      <button className="btn btn-info">Hello</button>
-      <button className="btn btn-success">Hello</button>
-      <button className="btn btn-warning">Hello</button>
-      <button className="btn btn-error">Hello</button>
     </div>
   );
 };

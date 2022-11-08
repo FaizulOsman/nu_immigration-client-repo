@@ -23,6 +23,7 @@ const AddReview = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const text = e.target.text.value;
     const name = user?.displayName;
     const email = user?.email;
     const photoURL = user?.photoURL;
@@ -35,6 +36,7 @@ const AddReview = () => {
       realDate,
       realTime,
       serviceId,
+      text,
     };
 
     fetch(`http://localhost:5000/reviews`, {
