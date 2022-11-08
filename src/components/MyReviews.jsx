@@ -30,12 +30,17 @@ const MyReviews = () => {
     }
   };
 
+  displayReviews.sort((a, b) => b.time - a.time);
+
   return (
     <div className="my-10">
       <div>
         {displayReviews.length > 0 ? (
           <>
-            <h2 className="mb-10 text-4xl font-bold text-center text-secondary">
+            <h2
+              // onClick={test}
+              className="mb-10 text-4xl font-bold text-center text-secondary"
+            >
               My Reviews
             </h2>
             {displayReviews.map((review) => (

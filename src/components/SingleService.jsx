@@ -1,6 +1,7 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import ReviewCard from "./ReviewCard";
 
@@ -18,6 +19,24 @@ const SingleService = () => {
       });
   }, [_id]);
 
+  const handleDeleteReview = (review) => {
+    const confirm = window.confirm(`Do you want to delete ${review?.title}`);
+    if (confirm) {
+      fetch(`http://localhost:5000/reviews/${review?._id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            const except = reviews.filter((r) => r?._id !== review?._id);
+            setReviews(except);
+            toast.success(`Successfully deleted ${review?.title}`);
+          }
+        });
+    }
+  };
+
+  reviews.sort((a, b) => b.time - a.time);
   return (
     <div className="w-11/12 mx-auto my-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
@@ -52,7 +71,11 @@ const SingleService = () => {
           Reviews of <span className="text-red-600 italic">{title}</span>
         </h1>
         {reviews.map((review) => (
-          <ReviewCard key={review?._id} review={review}></ReviewCard>
+          <ReviewCard
+            key={review?._id}
+            review={review}
+            handleDeleteReview={handleDeleteReview}
+          ></ReviewCard>
         ))}
       </div>
     </div>
