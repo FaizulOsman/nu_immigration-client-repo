@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import ReviewCard from "./ReviewCard";
+import Lottie from "lottie-react";
+import lottieAnimation from "../assets/lottieError404.json";
 
 const MyReviews = () => {
   const reviews = useLoaderData();
@@ -30,12 +32,12 @@ const MyReviews = () => {
 
   return (
     <div className="my-10">
-      <h2 className="mb-10 text-4xl font-bold text-center text-secondary">
-        My Reviews
-      </h2>
       <div>
         {displayReviews.length > 0 ? (
           <>
+            <h2 className="mb-10 text-4xl font-bold text-center text-secondary">
+              My Reviews
+            </h2>
             {displayReviews.map((review) => (
               <ReviewCard
                 key={review.time}
@@ -45,7 +47,12 @@ const MyReviews = () => {
             ))}
           </>
         ) : (
-          <h4 className="text-center">No reviews found</h4>
+          <div className="max-w-xs mx-auto">
+            <h2 className="mb-10 text-4xl font-bold text-center text-secondary">
+              No Review Found
+            </h2>
+            <Lottie animationData={lottieAnimation} loop={true}></Lottie>
+          </div>
         )}
       </div>
     </div>
