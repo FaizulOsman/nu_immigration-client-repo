@@ -18,7 +18,11 @@ const Services = () => {
           <div key={service?._id}>
             <div className="card hover:-mt-6 hover:z-20 duration-200 h-full bg-base-100 shadow-xl">
               <figure>
-                <img src={service?.image} alt="Shoes" />
+                <img
+                  className="w-full max-h-[315px]"
+                  src={service?.image}
+                  alt="Shoes"
+                />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">

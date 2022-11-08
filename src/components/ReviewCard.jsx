@@ -4,17 +4,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ReviewCard = ({ review, handleDeleteReview }) => {
-  const {
-    email,
-    text,
-    title,
-    name,
-    photoURL,
-    rating,
-    realDate,
-    realTime,
-    time,
-  } = review;
+  const { email, text, title, name, photoURL, rating, realDate, realTime } =
+    review;
 
   return (
     <div>

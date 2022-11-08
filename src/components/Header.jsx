@@ -36,16 +36,53 @@ const Header = () => {
           </span>
         </Link>
       </li>
-      <li>
-        <Link
-          to="/myreviews"
-          className="text-lg p-3 font-bold group transition-all duration-300 ease-in-out"
-        >
-          <span className="bg-left-bottom bg-gradient-to-r from-red-600 to-red-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-            My Reviews
-          </span>
-        </Link>
-      </li>
+      {user?.uid ? (
+        <>
+          <li>
+            <Link
+              to="/myreviews"
+              className="text-lg p-3 font-bold group transition-all duration-300 ease-in-out"
+            >
+              <span className="bg-left-bottom bg-gradient-to-r from-red-600 to-red-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                My Reviews
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/addservice"
+              className="text-lg p-3 font-bold group transition-all duration-300 ease-in-out"
+            >
+              <span className="bg-left-bottom bg-gradient-to-r from-red-600 to-red-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                Add Service
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              onClick={handleLogOut}
+              className="text-lg p-3 font-bold group transition-all duration-300 ease-in-out"
+            >
+              <span className="bg-left-bottom bg-gradient-to-r from-red-600 to-red-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                Log Out
+              </span>
+            </Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link
+              to="/login"
+              className="text-lg p-3 font-bold group transition-all duration-300 ease-in-out"
+            >
+              <span className="bg-left-bottom bg-gradient-to-r from-red-600 to-red-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                Login
+              </span>
+            </Link>
+          </li>
+        </>
+      )}
     </>
   );
 

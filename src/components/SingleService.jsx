@@ -1,11 +1,13 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 import ReviewCard from "./ReviewCard";
 
 const SingleService = () => {
+  const { user } = useContext(AuthContext);
   const { _id, image, cost, title, description, rating } = useLoaderData();
   const [reviews, setReviews] = useState([]);
 
@@ -55,12 +57,25 @@ const SingleService = () => {
                 icon={faStar}
               ></FontAwesomeIcon>
             </p>
-            <Link
-              to={`/addreview/${_id}`}
-              className="badge badge-outline btn-secondary p-4"
-            >
-              Review
-            </Link>
+            {user?.uid ? (
+              <Link
+                to={`/addreview/${_id}`}
+                className="badge badge-outline btn-secondary p-4"
+              >
+                Review
+              </Link>
+            ) : (
+              <p>
+                Please{" "}
+                <Link
+                  to="/login"
+                  className="text-secondary hover:text-red-600 font-bold"
+                >
+                  Login
+                </Link>{" "}
+                to add review
+              </p>
+            )}
           </div>
         </div>
       </div>
