@@ -22,9 +22,24 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Successfully logged in, Keep Going");
-        form.reset();
-        navigate(from, { replace: true });
+        const currentUser = { email: user.email };
+
+        // get JWT token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("immigration-token", data.token);
+            toast.success("Successfully logged in, Keep Going");
+            form.reset();
+            navigate(from, { replace: true });
+          });
       })
       .catch((e) => {
         console.error(e);

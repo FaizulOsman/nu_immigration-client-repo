@@ -60,6 +60,7 @@ const Header = () => {
           </li>
           <li>
             <Link
+              to="/login"
               onClick={handleLogOut}
               className="text-lg p-3 font-bold group transition-all duration-300 ease-in-out"
             >
@@ -181,7 +182,9 @@ const Header = () => {
                   </li>
                   <hr />
                   <li>
-                    <Link onClick={handleLogOut}>Sign out</Link>
+                    <Link to="/login" onClick={handleLogOut}>
+                      Log out
+                    </Link>
                   </li>
                 </>
               )}
