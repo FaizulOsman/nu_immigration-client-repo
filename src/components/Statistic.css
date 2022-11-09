@@ -1,0 +1,8 @@
+.statistic {
+  height: 600px;
+  background-image: url("https://i.ibb.co/3rvPJmt/statistic.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-position-y: 50%;
+}

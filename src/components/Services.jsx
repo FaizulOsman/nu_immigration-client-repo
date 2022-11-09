@@ -1,8 +1,10 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../customHooks/useTitle";
+import "react-photo-view/dist/react-photo-view.css";
 
 const Services = () => {
   const services = useLoaderData();
@@ -18,11 +20,24 @@ const Services = () => {
           <div key={service?._id}>
             <div className="card hover:-mt-6 hover:z-20 duration-200 h-full bg-base-100 shadow-xl">
               <figure>
-                <img
-                  className="w-full max-h-[315px]"
-                  src={service?.image}
-                  alt="Shoes"
-                />
+                <PhotoProvider
+                  speed={() => 800}
+                  easing={(type) =>
+                    type === 2
+                      ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+                      : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+                  }
+                >
+                  <div className="">
+                    <PhotoView src={service?.image}>
+                      <img
+                        src={service?.image}
+                        alt=""
+                        style={{ objectFit: "cover" }}
+                      />
+                    </PhotoView>
+                  </div>
+                </PhotoProvider>
               </figure>
               <div className="card-body">
                 <h2 className="card-title">

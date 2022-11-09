@@ -52,9 +52,9 @@ const MyReviews = () => {
             ))}
           </>
         ) : (
-          <div className="max-w-xs mx-auto">
+          <div className="max-w-xs mx-auto mb-20">
             <Lottie animationData={lottieAnimation} loop={true}></Lottie>
-            <h2 className="mb-10 text-4xl font-bold text-center text-secondary">
+            <h2 className="italic mb-10 text-4xl font-bold text-center text-secondary">
               No reviews were added
             </h2>
           </div>

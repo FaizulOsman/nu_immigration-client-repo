@@ -4,6 +4,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../customHooks/useTitle";
 import Carousel from "./Carousel";
+import Statistic from "./Statistic";
 import WelcomeSection from "./WelcomeSection";
 
 const Home = () => {
@@ -25,7 +26,7 @@ const Home = () => {
             <div key={service?._id}>
               <div className="card hover:-mt-6 hover:z-20 duration-200 h-full bg-base-100 shadow-xl">
                 <figure>
-                  <img src={service?.image} alt="Shoes" />
+                  <img src={service?.image} alt="" />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">
@@ -61,6 +62,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
+      <Statistic></Statistic>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import AddReview from "./AddReview";
 import ReviewCard from "./ReviewCard";
 
 const SingleService = () => {
@@ -62,14 +63,14 @@ const SingleService = () => {
                 to={`/addreview/${_id}`}
                 className="badge badge-outline btn-secondary p-4"
               >
-                Review
+                Add a review
               </Link>
             ) : (
               <p>
                 Please{" "}
                 <Link
                   to="/login"
-                  className="text-secondary hover:text-red-600 font-bold"
+                  className="badge badge-outline btn-secondary p-4"
                 >
                   Login
                 </Link>{" "}
@@ -93,6 +94,7 @@ const SingleService = () => {
           ></ReviewCard>
         ))}
       </div>
+      {user?.uid ? <AddReview></AddReview> : undefined}
     </div>
   );
 };
