@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import ReviewCard from "./ReviewCard";
 import Lottie from "lottie-react";
@@ -9,11 +8,16 @@ import useTitle from "../customHooks/useTitle";
 
 const MyReviews = () => {
   useTitle("My Reviews");
-  const reviews = useLoaderData();
   const { user } = useContext(AuthContext);
+  const [reviews, setReviews] = useState([]);
 
-  const myReviews = reviews.filter((r) => r?.email === user?.email);
-  const [displayReviews, setDisplayReviews] = useState(myReviews);
+  useEffect(() => {
+    fetch(`http://localhost:5000/myreviews?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data);
+      });
+  }, [user?.email]);
 
   const handleDeleteReview = (review) => {
     const confirm = window.confirm(`Do you want to delete ${review?.title}`);
@@ -24,20 +28,20 @@ const MyReviews = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
-            const except = displayReviews.filter((r) => r?._id !== review?._id);
-            setDisplayReviews(except);
+            const except = reviews.filter((r) => r?._id !== review?._id);
+            setReviews(except);
             toast.success(`Successfully deleted ${review?.title}`);
           }
         });
     }
   };
 
-  displayReviews.sort((a, b) => b.time - a.time);
+  reviews.sort((a, b) => b.time - a.time);
 
   return (
     <div className="my-10">
       <div>
-        {displayReviews.length > 0 ? (
+        {reviews?.length > 0 ? (
           <>
             <h2
               // onClick={test}
@@ -45,7 +49,7 @@ const MyReviews = () => {
             >
               My Reviews
             </h2>
-            {displayReviews.map((review) => (
+            {reviews.map((review) => (
               <ReviewCard
                 key={review.time}
                 review={review}
