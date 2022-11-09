@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 
 const Statistic = () => {
   return (
-    <div className="statistic text-white">
+    <div className="statistic text-white my-32">
       <div className="w-2/3 mx-auto flex items-center justify-center">
         <div className="h-full">
           <h2 className="text-center text-3xl md:text-5xl pb-10 mt-20 md:mt-24 lg:mt-32 font-bold border-b-4 border-secondary">

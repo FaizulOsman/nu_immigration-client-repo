@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../customHooks/useTitle";
+import AssessmentSection from "./AssessmentSection";
 import Carousel from "./Carousel";
 import Statistic from "./Statistic";
 import WelcomeSection from "./WelcomeSection";
@@ -63,6 +64,7 @@ const Home = () => {
         </div>
       </div>
       <Statistic></Statistic>
+      <AssessmentSection></AssessmentSection>
     </div>
   );
 };
