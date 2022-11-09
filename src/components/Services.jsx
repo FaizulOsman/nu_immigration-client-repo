@@ -12,7 +12,11 @@ const Services = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services`)
+    fetch(`http://localhost:5000/services`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);

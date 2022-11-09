@@ -46,6 +46,7 @@ const AddReview = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
       },
       body: JSON.stringify(review),
     })

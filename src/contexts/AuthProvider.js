@@ -55,6 +55,8 @@ const AuthProvider = ({ children }) => {
   };
   // Log Out
   const logOut = () => {
+    // When user logged out "immigration-token" will remove from localStorage
+    localStorage.removeItem("immigration-token");
     setLoading(true);
     return signOut(auth);
   };

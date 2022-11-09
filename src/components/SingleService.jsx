@@ -15,7 +15,11 @@ const SingleService = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews/`)
+    fetch(`http://localhost:5000/reviews/`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         const exist = data.filter((r) => r.serviceId === _id);
@@ -29,6 +33,9 @@ const SingleService = () => {
     if (confirm) {
       fetch(`http://localhost:5000/reviews/${review?._id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {

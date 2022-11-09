@@ -50,8 +50,26 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Successfully Logged in with Google");
-        navigate(from, { replace: true });
+        const currentUser = { email: user.email };
+
+        // get JWT token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem(
+              "immigration-token"
+            )}`,
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("immigration-token", data.token);
+            toast.success("Successfully Logged in with Google");
+            navigate(from, { replace: true });
+          });
       })
       .catch((e) => {
         console.log(e);
@@ -64,8 +82,26 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Successfully Logged in with Github");
-        navigate(from, { replace: true });
+        const currentUser = { email: user.email };
+
+        // get JWT token
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem(
+              "immigration-token"
+            )}`,
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("immigration-token", data.token);
+            toast.success("Successfully Logged in with Github");
+            navigate(from, { replace: true });
+          });
       })
       .catch((e) => {
         console.log(e);
