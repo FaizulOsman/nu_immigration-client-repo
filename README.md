@@ -10,15 +10,15 @@ Hosted in Firebase -> https://nu-immigration.web.app
 
 ## Client Side Code Link:
 
-Github Link:
+Github Link: https://github.com/Porgramming-Hero-web-course/b6a11-service-review-client-side-FaizulOsman
 
 ## Server Link
 
-Hosted in Vercel ->
+Hosted in Vercel -> https://b6a11-service-review-server-side-faizul-osman.vercel.app/
 
 ## Server Side Code Link:
 
-Github Link:
+Github Link: https://github.com/Porgramming-Hero-web-course/b6a11-service-review-server-side-FaizulOsman
 
 ## What used in this app
 

@@ -7,7 +7,7 @@ const Blog = () => {
   return (
     <div>
       <div className="w-11/12 mx-auto my-24">
-        <h2 className="text-center mb-10 text-xl md:text-4xl font-semibold">
+        <h2 className="text-center text-primary mb-10 text-xl md:text-4xl font-bold">
           Questions And Answers
         </h2>
         <div className="w-11/12 mx-auto">
