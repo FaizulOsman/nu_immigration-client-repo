@@ -53,16 +53,19 @@ const Register = () => {
         const currentUser = { email: user.email };
 
         // get JWT token
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem(
-              "immigration-token"
-            )}`,
-          },
-          body: JSON.stringify(currentUser),
-        })
+        fetch(
+          "https://b6a11-service-review-server-side-faizul-osman.vercel.app/jwt",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem(
+                "immigration-token"
+              )}`,
+            },
+            body: JSON.stringify(currentUser),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -85,16 +88,19 @@ const Register = () => {
         const currentUser = { email: user.email };
 
         // get JWT token
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem(
-              "immigration-token"
-            )}`,
-          },
-          body: JSON.stringify(currentUser),
-        })
+        fetch(
+          "https://b6a11-service-review-server-side-faizul-osman.vercel.app/jwt",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem(
+                "immigration-token"
+              )}`,
+            },
+            body: JSON.stringify(currentUser),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

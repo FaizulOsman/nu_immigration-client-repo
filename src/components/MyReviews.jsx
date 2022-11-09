@@ -12,11 +12,14 @@ const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myreviews?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
-      },
-    })
+    fetch(
+      `https://b6a11-service-review-server-side-faizul-osman.vercel.app/myreviews?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
+        },
+      }
+    )
       .then((res) => {
         // Logout user when user is invalid
         if (res.status === 401 || res.status === 403) {
@@ -32,12 +35,17 @@ const MyReviews = () => {
   const handleDeleteReview = (review) => {
     const confirm = window.confirm(`Do you want to delete ${review?.title}`);
     if (confirm) {
-      fetch(`http://localhost:5000/reviews/${review?._id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
-        },
-      })
+      fetch(
+        `https://b6a11-service-review-server-side-faizul-osman.vercel.app/reviews/${review?._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem(
+              "immigration-token"
+            )}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {

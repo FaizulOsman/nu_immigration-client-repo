@@ -5,11 +5,14 @@ const Footer = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/services`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
-      },
-    })
+    fetch(
+      `https://b6a11-service-review-server-side-faizul-osman.vercel.app/services`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setServices(data);

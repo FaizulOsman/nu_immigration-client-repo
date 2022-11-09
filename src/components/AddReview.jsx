@@ -42,14 +42,17 @@ const AddReview = () => {
       title,
     };
 
-    fetch(`http://localhost:5000/reviews`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
-      },
-      body: JSON.stringify(review),
-    })
+    fetch(
+      `https://b6a11-service-review-server-side-faizul-osman.vercel.app/reviews`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
+        },
+        body: JSON.stringify(review),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

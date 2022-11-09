@@ -14,14 +14,17 @@ const AddService = () => {
     const description = form.description.value;
     const service = { image, title, description, cost, rating };
 
-    fetch(`http://localhost:5000/services`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
-      },
-      body: JSON.stringify(service),
-    })
+    fetch(
+      `https://b6a11-service-review-server-side-faizul-osman.vercel.app/services`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
+        },
+        body: JSON.stringify(service),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

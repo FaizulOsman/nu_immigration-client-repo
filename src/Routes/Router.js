@@ -20,26 +20,36 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:5000/threeservices"),
+        loader: () =>
+          fetch(
+            "https://b6a11-service-review-server-side-faizul-osman.vercel.app/threeservices"
+          ),
         element: <Home></Home>,
       },
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Register></Register> },
       {
         path: "/services",
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () =>
+          fetch(
+            "https://b6a11-service-review-server-side-faizul-osman.vercel.app/services"
+          ),
         element: <Services></Services>,
       },
       {
         path: "/services/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://b6a11-service-review-server-side-faizul-osman.vercel.app/services/${params.id}`
+          ),
         element: <SingleService></SingleService>,
       },
       {
         path: "/addreview/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://b6a11-service-review-server-side-faizul-osman.vercel.app/services/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <AddReview></AddReview>
@@ -64,7 +74,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        loader: () => fetch(`http://localhost:5000/blogs`),
+        loader: () =>
+          fetch(
+            `https://b6a11-service-review-server-side-faizul-osman.vercel.app/blogs`
+          ),
         element: <Blog></Blog>,
       },
     ],
