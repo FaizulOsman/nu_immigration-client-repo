@@ -4,10 +4,12 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import useTitle from "../customHooks/useTitle";
 import AddReview from "./AddReview";
 import ReviewCard from "./ReviewCard";
 
 const SingleService = () => {
+  useTitle("Service");
   const { user } = useContext(AuthContext);
   const { _id, image, cost, title, description, rating } = useLoaderData();
   const [reviews, setReviews] = useState([]);

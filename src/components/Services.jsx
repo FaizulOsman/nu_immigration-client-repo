@@ -7,8 +7,8 @@ import useTitle from "../customHooks/useTitle";
 import "react-photo-view/dist/react-photo-view.css";
 
 const Services = () => {
-  const services = useLoaderData();
   useTitle("Services");
+  const services = useLoaderData();
 
   return (
     <div className="w-11/12 mx-auto my-14">

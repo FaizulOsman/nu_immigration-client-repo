@@ -5,9 +5,9 @@ import { AuthContext } from "../contexts/AuthProvider";
 import useTitle from "../customHooks/useTitle";
 
 const Register = () => {
+  useTitle("Register");
   const { createUser, googleSignIn, githubSignIn, updateUserProfile, logOut } =
     useContext(AuthContext);
-  useTitle("Register");
   const navigate = useNavigate();
   const location = useLocation();
 

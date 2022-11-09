@@ -9,8 +9,8 @@ import Statistic from "./Statistic";
 import WelcomeSection from "./WelcomeSection";
 
 const Home = () => {
-  const threeservices = useLoaderData();
   useTitle("Home");
+  const threeservices = useLoaderData();
 
   return (
     <div className="">

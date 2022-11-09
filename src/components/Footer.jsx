@@ -13,8 +13,8 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className="bg-base-200">
-      <footer className="footer w-11/12 mx-auto p-10 text-base-content">
+    <div className="bg-[#333] text-white font-semibold">
+      <footer className="footer w-11/12 mx-auto p-10">
         <div>
           <svg
             width="50"

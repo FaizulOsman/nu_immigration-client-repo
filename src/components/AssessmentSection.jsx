@@ -3,7 +3,7 @@ import assessmentImg from "../assets/images/assessment.jpg";
 
 const AssessmentSection = () => {
   return (
-    <div className="py-20 my-10">
+    <div className="my-20">
       <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 items-center justify-center">
         <div className="mx-auto">
           <img className="rounded-lg max-h-96" src={assessmentImg} alt="" />

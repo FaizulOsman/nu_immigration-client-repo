@@ -5,8 +5,10 @@ import { AuthContext } from "../contexts/AuthProvider";
 import ReviewCard from "./ReviewCard";
 import Lottie from "lottie-react";
 import lottieAnimation from "../assets/lottieError404.json";
+import useTitle from "../customHooks/useTitle";
 
 const MyReviews = () => {
+  useTitle("My Reviews");
   const reviews = useLoaderData();
   const { user } = useContext(AuthContext);
 

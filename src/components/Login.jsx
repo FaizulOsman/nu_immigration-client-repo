@@ -5,10 +5,10 @@ import { AuthContext } from "../contexts/AuthProvider";
 import useTitle from "../customHooks/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const { logIn, githubSignIn, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  useTitle("Login");
 
   const from = location.state?.from?.pathname || "/";
 

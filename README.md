@@ -36,6 +36,6 @@ In this website React-router-dom, Tailwind, daisyUI, Lottie-react, React-hot-toa
 
 - React-hot-toast: https://react-hot-toast.com/
 
-- React-photo-view:
+- React-photo-view: https://www.npmjs.com/package/react-photo-view
 
 **Thanks for visiting...**

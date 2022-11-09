@@ -1,7 +1,9 @@
 import React from "react";
 import toast from "react-hot-toast";
+import useTitle from "../customHooks/useTitle";
 
 const AddService = () => {
+  useTitle("Add Service");
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,7 +38,7 @@ const AddService = () => {
       >
         <div className="card-body">
           <h1 className="text-4xl font-bold mb-5 text-center text-primary">
-            Add a Service
+            Add a service
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="form-control md:mb-5">
