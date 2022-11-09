@@ -9,6 +9,7 @@ import MyReviews from "../components/MyReviews";
 import Register from "../components/Register";
 import Services from "../components/Services";
 import SingleService from "../components/SingleService";
+import UpdateReview from "../components/UpdateReview";
 import Main from "../layouts/Main";
 import PrivateRoute from "./PrivateRoute";
 
@@ -69,6 +70,18 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/reviews/:id",
+        loader: ({ params }) =>
+          fetch(
+            `https://b6a11-service-review-server-side-faizul-osman.vercel.app/reviews/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <UpdateReview></UpdateReview>
           </PrivateRoute>
         ),
       },

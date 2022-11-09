@@ -4,9 +4,9 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import useTitle from "../customHooks/useTitle";
 
-const AddReview = () => {
-  useTitle("Add Review");
-  const { _id, title } = useLoaderData();
+const UpdateReview = () => {
+  useTitle("Update Review");
+  const { _id, title, text } = useLoaderData();
   const serviceId = _id;
   const { user } = useContext(AuthContext);
   const [rating, setRating] = useState(5);
@@ -37,15 +37,13 @@ const AddReview = () => {
       time,
       realDate,
       realTime,
-      serviceId,
       text,
-      title,
     };
 
     fetch(
-      `https://b6a11-service-review-server-side-faizul-osman.vercel.app/reviews`,
+      `https://b6a11-service-review-server-side-faizul-osman.vercel.app/reviews/${_id}`,
       {
-        method: "POST",
+        method: "PUT",
         headers: {
           "content-type": "application/json",
           authorization: `Bearer ${localStorage.getItem("immigration-token")}`,
@@ -56,7 +54,7 @@ const AddReview = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          toast.success("Review Added Successfully");
+          toast.success("Review Updated Successfully");
           e.target.reset();
         }
       });
@@ -72,14 +70,14 @@ const AddReview = () => {
         <form onSubmit={handleSubmit} className="">
           <div className="">
             <h1 className="text-4xl text-primary text-center font-bold mb-5">
-              Add a Review to{" "}
-              <span className="text-red-600 italic">{title}</span>
+              Update <span className="text-red-600 italic">{title}</span>
             </h1>
             <div className="form-control mb-5">
               <label className="label">
                 <span className="font-semibold text-lg">Review text</span>
               </label>
               <textarea
+                defaultValue={text}
                 className="textarea textarea-bordered"
                 placeholder="Text"
                 name="text"
@@ -136,4 +134,4 @@ const AddReview = () => {
   );
 };
 
-export default AddReview;
+export default UpdateReview;

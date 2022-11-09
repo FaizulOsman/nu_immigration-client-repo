@@ -7,9 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ReviewCard = ({ review, handleDeleteReview }) => {
-  const { email, text, title, name, photoURL, rating, realDate, realTime } =
-    review;
+const ReviewCard = ({ review, handleDeleteReview, handleUpdateReview }) => {
+  const {
+    _id,
+    email,
+    text,
+    title,
+    name,
+    photoURL,
+    rating,
+    realDate,
+    realTime,
+  } = review;
 
   return (
     <div>
@@ -42,7 +51,8 @@ const ReviewCard = ({ review, handleDeleteReview }) => {
                 X
               </Link>
               <Link
-                onClick={() => handleDeleteReview(review)}
+                to={`/reviews/${_id}`}
+                onClick={() => handleUpdateReview(review)}
                 className="text-primary text-xl"
               >
                 <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>

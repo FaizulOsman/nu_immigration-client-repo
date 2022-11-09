@@ -27,7 +27,6 @@ const SingleService = () => {
       .then((data) => {
         const exist = data.filter((r) => r.serviceId === _id);
         setReviews(exist);
-        console.log(exist);
       });
   }, [_id]);
 
