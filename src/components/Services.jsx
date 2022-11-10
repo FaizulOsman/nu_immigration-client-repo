@@ -134,7 +134,7 @@ const Services = () => {
                       Details
                     </Link>
                     <Link
-                      onClick={() => handleDeleteService(service)}
+                      // onClick={() => handleDeleteService(service)}
                       title="This button is disabled for security purpose"
                       className="badge badge-outline bg-red-600 p-4 font-bold text-white"
                     >
