@@ -39,6 +39,7 @@ const Footer = () => {
             <br />
             Providing reliable service since 1992
           </p>
+          <p>© 2022 NU-Immigration, Inc. All rights reserved</p>
         </div>
         <div>
           <span className="footer-title">Company</span>

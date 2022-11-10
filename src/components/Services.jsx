@@ -98,7 +98,7 @@ const Services = () => {
                   </div>
                   <Link
                     to={`/services/${service?._id}`}
-                    className="badge badge-outline"
+                    className="badge badge-outline btn-primary p-4 font-bold text-white"
                   >
                     Details
                   </Link>

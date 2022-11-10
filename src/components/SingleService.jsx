@@ -2,11 +2,13 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import useTitle from "../customHooks/useTitle";
 import AddReview from "./AddReview";
 import ReviewCard from "./ReviewCard";
+import "react-photo-view/dist/react-photo-view.css";
 
 const SingleService = () => {
   useTitle("Service");
@@ -60,7 +62,20 @@ const SingleService = () => {
     <div className="w-11/12 mx-auto my-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         <div className="">
-          <img src={image} alt="" />
+          <PhotoProvider
+            speed={() => 800}
+            easing={(type) =>
+              type === 2
+                ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+                : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+            }
+          >
+            <div className="">
+              <PhotoView src={image}>
+                <img src={image} alt="" style={{ objectFit: "cover" }} />
+              </PhotoView>
+            </div>
+          </PhotoProvider>
         </div>
         <div className="">
           <h3 className="text-3xl font-bold text-primary">{title}</h3>
