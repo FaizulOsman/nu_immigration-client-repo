@@ -114,7 +114,7 @@ const AddService = () => {
           <div className="form-control mt-6">
             <input
               type="submit"
-              value="Add event"
+              value="Add Service"
               className="btn btn-primary text-white"
             />
           </div>

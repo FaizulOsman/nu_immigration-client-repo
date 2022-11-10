@@ -5,6 +5,7 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 import useTitle from "../customHooks/useTitle";
 import "react-photo-view/dist/react-photo-view.css";
+import toast from "react-hot-toast";
 
 const Services = () => {
   useTitle("Services");
@@ -26,6 +27,31 @@ const Services = () => {
         setServices(data);
       });
   }, []);
+
+  const handleDeleteService = (service) => {
+    const confirm = window.confirm(`Do you want to delete ${service?.title}`);
+    if (confirm) {
+      fetch(
+        `https://b6a11-service-review-server-side-faizul-osman.vercel.app/services/${service?._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem(
+              "immigration-token"
+            )}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            const except = services.filter((s) => service?._id !== s?._id);
+            setServices(except);
+            toast.success(`Successfully deleted ${service?.title}`);
+          }
+        });
+    }
+  };
 
   if (loading) {
     return (
@@ -97,12 +123,20 @@ const Services = () => {
                   <div className="font-bold text-yellow-500">
                     ${service?.cost}
                   </div>
-                  <Link
-                    to={`/services/${service?._id}`}
-                    className="badge badge-outline btn-primary p-4 font-bold text-white"
-                  >
-                    Details
-                  </Link>
+                  <div>
+                    <Link
+                      to={`/services/${service?._id}`}
+                      className="badge badge-outline btn-primary p-4 font-bold text-white"
+                    >
+                      Details
+                    </Link>
+                    <Link
+                      onClick={() => handleDeleteService(service)}
+                      className="badge badge-outline bg-red-600 p-4 font-bold text-white"
+                    >
+                      Delete
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
