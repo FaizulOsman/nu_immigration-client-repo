@@ -7,6 +7,8 @@ import AssessmentSection from "./AssessmentSection";
 import Carousel from "./Carousel";
 import Statistic from "./Statistic";
 import WelcomeSection from "./WelcomeSection";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const Home = () => {
   useTitle("Home");
@@ -26,7 +28,25 @@ const Home = () => {
             <div key={service?._id}>
               <div className="card hover:-mt-6 hover:z-20 duration-200 h-full bg-base-100 shadow-xl">
                 <figure>
-                  <img className="max-h-[315px]" src={service?.image} alt="" />
+                  <PhotoProvider
+                    speed={() => 800}
+                    easing={(type) =>
+                      type === 2
+                        ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+                        : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+                    }
+                  >
+                    <div className="">
+                      <PhotoView src={service?.image}>
+                        <img
+                          src={service?.image}
+                          className="max-h-[315px]"
+                          alt=""
+                          style={{ objectFit: "cover" }}
+                        />
+                      </PhotoView>
+                    </div>
+                  </PhotoProvider>
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">

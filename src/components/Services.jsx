@@ -1,9 +1,9 @@
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
-import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 import useTitle from "../customHooks/useTitle";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import toast from "react-hot-toast";
 
