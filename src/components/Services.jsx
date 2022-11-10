@@ -59,7 +59,7 @@ const Services = () => {
   if (loading) {
     return (
       <div className="min-h-screen mt-52">
-        <div className="w-32 mx-auto">
+        <div className="w-10 mx-auto">
           <svg
             className="inline mr-2 w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
             viewBox="0 0 100 101"
@@ -134,7 +134,7 @@ const Services = () => {
                       Details
                     </Link>
                     <Link
-                      // onClick={() => handleDeleteService(service)}
+                      onClick={() => handleDeleteService(service)}
                       title="This button is disabled for security purpose"
                       className="badge badge-outline bg-red-600 p-4 font-bold text-white"
                     >
