@@ -11,7 +11,6 @@ import WelcomeSection from "./WelcomeSection";
 const Home = () => {
   useTitle("Home");
   const threeservices = useLoaderData();
-
   return (
     <div className="">
       <Carousel></Carousel>
@@ -27,7 +26,7 @@ const Home = () => {
             <div key={service?._id}>
               <div className="card hover:-mt-6 hover:z-20 duration-200 h-full bg-base-100 shadow-xl">
                 <figure>
-                  <img src={service?.image} alt="" />
+                  <img className="max-h-[315px]" src={service?.image} alt="" />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">
@@ -47,7 +46,7 @@ const Home = () => {
                     </div>
                     <Link
                       to={`/services/${service?._id}`}
-                      className="badge badge-outline"
+                      className="badge badge-outline btn-primary p-4 font-bold text-white"
                     >
                       Details
                     </Link>
