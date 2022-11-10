@@ -73,6 +73,7 @@ const Services = () => {
                     <PhotoView src={service?.image}>
                       <img
                         src={service?.image}
+                        className="max-h-[315px]"
                         alt=""
                         style={{ objectFit: "cover" }}
                       />

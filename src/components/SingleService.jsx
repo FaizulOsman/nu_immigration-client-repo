@@ -9,6 +9,8 @@ import useTitle from "../customHooks/useTitle";
 import AddReview from "./AddReview";
 import ReviewCard from "./ReviewCard";
 import "react-photo-view/dist/react-photo-view.css";
+import Lottie from "lottie-react";
+import lottieAnimation from "../assets/lottieError404.json";
 
 const SingleService = () => {
   useTitle("Service");
@@ -72,7 +74,12 @@ const SingleService = () => {
           >
             <div className="">
               <PhotoView src={image}>
-                <img src={image} alt="" style={{ objectFit: "cover" }} />
+                <img
+                  src={image}
+                  className="max-h-[415px]"
+                  alt=""
+                  style={{ objectFit: "cover" }}
+                />
               </PhotoView>
             </div>
           </PhotoProvider>
@@ -115,15 +122,27 @@ const SingleService = () => {
       {/* ================ Reviews section =============== */}
       <div className="my-20 border-t-4 pt-10">
         <h1 className="text-4xl text-primary text-center font-bold mb-16">
-          Reviews of <span className="text-red-600 italic">{title}</span>
+          Reviews of <span className="text-red-600 italic">{title}</span>{" "}
+          Service
         </h1>
-        {reviews.map((review) => (
-          <ReviewCard
-            key={review?._id}
-            review={review}
-            handleDeleteReview={handleDeleteReview}
-          ></ReviewCard>
-        ))}
+        {reviews?.length > 0 ? (
+          <>
+            {reviews.map((review) => (
+              <ReviewCard
+                key={review?._id}
+                review={review}
+                handleDeleteReview={handleDeleteReview}
+              ></ReviewCard>
+            ))}
+          </>
+        ) : (
+          <div className="max-w-xs mx-auto mb-20">
+            <Lottie animationData={lottieAnimation} loop={true}></Lottie>
+            <h2 className="italic mb-10 text-4xl font-bold text-center text-secondary">
+              No reviews were added
+            </h2>
+          </div>
+        )}
       </div>
       {user?.uid ? <AddReview></AddReview> : undefined}
     </div>
