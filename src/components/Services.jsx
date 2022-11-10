@@ -12,6 +12,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Load services
   useEffect(() => {
     fetch(
       `https://b6a11-service-review-server-side-faizul-osman.vercel.app/services`,
@@ -28,6 +29,7 @@ const Services = () => {
       });
   }, []);
 
+  // Service Delete Function
   const handleDeleteService = (service) => {
     const confirm = window.confirm(`Do you want to delete ${service?.title}`);
     if (confirm) {
@@ -53,6 +55,7 @@ const Services = () => {
     }
   };
 
+  // Loading condition
   if (loading) {
     return (
       <div className="min-h-screen mt-52">
@@ -131,7 +134,8 @@ const Services = () => {
                       Details
                     </Link>
                     <Link
-                      onClick={() => handleDeleteService(service)}
+                      // onClick={() => handleDeleteService(service)}
+                      title="This button is disabled for security purpose"
                       className="badge badge-outline bg-red-600 p-4 font-bold text-white"
                     >
                       Delete

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const [services, setServices] = useState([]);
 
+  // Load Services name
   useEffect(() => {
     fetch(
       `https://b6a11-service-review-server-side-faizul-osman.vercel.app/services`,
@@ -42,8 +43,8 @@ const Footer = () => {
           <p>© 2022 NU-Immigration, Inc. All rights reserved</p>
         </div>
         <div>
-          <span className="footer-title">Company</span>
-          <Link to="/home" className="link link-hover">
+          <span className="footer-title">Pages</span>
+          <Link to="/" className="link link-hover">
             Home
           </Link>
           <Link to="/services" className="link link-hover">
@@ -54,6 +55,9 @@ const Footer = () => {
           </Link>
           <Link to="/blog" className="link link-hover">
             Blog
+          </Link>
+          <Link to="/login" className="link link-hover">
+            Login
           </Link>
         </div>
         <div>

@@ -14,6 +14,7 @@ const Register = () => {
 
   const from = location.state?.from?.pathname || "/";
 
+  // Register function
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
@@ -23,6 +24,7 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    // Create User
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -74,6 +76,7 @@ const Register = () => {
     );
   }
 
+  // Google Sign In Function
   const handleGoogleSignIn = () => {
     setLoading(true);
     googleSignIn()
@@ -112,6 +115,7 @@ const Register = () => {
       });
   };
 
+  // Github Sign In Function
   const handleGithubSignIn = () => {
     setLoading(true);
     githubSignIn()

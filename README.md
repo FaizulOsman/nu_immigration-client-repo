@@ -38,4 +38,6 @@ In this website React-router-dom, Tailwind, daisyUI, Lottie-react, React-hot-toa
 
 - React-photo-view: https://www.npmjs.com/package/react-photo-view
 
+- React-countup: https://www.npmjs.com/package/react-countup
+
 **Thanks for visiting...**

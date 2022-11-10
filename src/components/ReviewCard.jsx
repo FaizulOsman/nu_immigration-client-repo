@@ -45,12 +45,14 @@ const ReviewCard = ({ review, handleDeleteReview, handleUpdateReview }) => {
             </div>
             <div className="flex md:flex-row flex-col items-center gap-4">
               <Link
+                title="Delete Review"
                 onClick={() => handleDeleteReview(review)}
                 className="bg-red-600 hover:bg-red-700 cursor-pointer rounded-full px-2 text-white"
               >
                 X
               </Link>
               <Link
+                title="Update Review"
                 to={`/reviews/${_id}`}
                 onClick={() => handleUpdateReview(review)}
                 className="text-primary text-xl"

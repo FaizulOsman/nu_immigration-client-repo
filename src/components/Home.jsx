@@ -15,7 +15,10 @@ const Home = () => {
   const threeservices = useLoaderData();
   return (
     <div className="">
+      {/* =========== Carousel Section ========== */}
       <Carousel></Carousel>
+
+      {/* =========== Welcome Section ========== */}
       <WelcomeSection></WelcomeSection>
       <div className="w-11/12 mx-auto my-20">
         <div className="text-center">
@@ -82,7 +85,11 @@ const Home = () => {
           </Link>
         </div>
       </div>
+
+      {/* =========== Statistic Section ========== */}
       <Statistic></Statistic>
+
+      {/* =========== Assessment Section ========== */}
       <AssessmentSection></AssessmentSection>
     </div>
   );

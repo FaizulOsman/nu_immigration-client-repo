@@ -11,6 +11,7 @@ const MyReviews = () => {
   const { user, logOut } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
 
+  // Load all of my reviews
   useEffect(() => {
     fetch(
       `https://b6a11-service-review-server-side-faizul-osman.vercel.app/myreviews?email=${user?.email}`,
@@ -32,6 +33,7 @@ const MyReviews = () => {
       });
   }, [user?.email, logOut]);
 
+  // Delete function for review
   const handleDeleteReview = (review) => {
     const confirm = window.confirm(`Do you want to delete ${review?.title}`);
     if (confirm) {
@@ -57,6 +59,7 @@ const MyReviews = () => {
     }
   };
 
+  // Reviews Sorting method (Reverse way with time)
   reviews.sort((a, b) => b.time - a.time);
 
   return (

@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-
+  // Auth Information
   const authInfo = {
     user,
     googleSignIn,

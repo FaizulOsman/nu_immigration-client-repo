@@ -11,6 +11,7 @@ const AddReview = () => {
   const { user } = useContext(AuthContext);
   const [rating, setRating] = useState(5);
 
+  // Get Date
   const date = new Date();
   const time = date.getTime();
 
@@ -23,6 +24,7 @@ const AddReview = () => {
   const minute = date.getMinutes();
   const realTime = `${hour}:${minute}`;
 
+  // Add Review function
   const handleSubmit = (e) => {
     e.preventDefault();
     const text = e.target.text.value;
@@ -62,6 +64,7 @@ const AddReview = () => {
       });
   };
 
+  // Review Rating function
   const handleReviewRating = (e) => {
     setRating(parseInt(e.target.value));
   };

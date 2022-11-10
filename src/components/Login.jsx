@@ -13,12 +13,14 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
+  // Log In function
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
     // Login with Email and Password
     logIn(email, password)
       .then((result) => {

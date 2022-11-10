@@ -27,6 +27,14 @@ export const router = createBrowserRouter([
           ),
         element: <Home></Home>,
       },
+      {
+        path: "/home",
+        loader: () =>
+          fetch(
+            "https://b6a11-service-review-server-side-faizul-osman.vercel.app/threeservices"
+          ),
+        element: <Home></Home>,
+      },
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Register></Register> },
       {

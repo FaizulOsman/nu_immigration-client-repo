@@ -18,6 +18,7 @@ const SingleService = () => {
   const { _id, image, cost, title, description, rating } = useLoaderData();
   const [reviews, setReviews] = useState([]);
 
+  // Load Reviews
   useEffect(() => {
     fetch(
       `https://b6a11-service-review-server-side-faizul-osman.vercel.app/reviews/`,
@@ -34,6 +35,7 @@ const SingleService = () => {
       });
   }, [_id]);
 
+  // Delate Function (Review)
   const handleDeleteReview = (review) => {
     const confirm = window.confirm(`Do you want to delete ${review?.title}`);
     if (confirm) {
@@ -59,7 +61,9 @@ const SingleService = () => {
     }
   };
 
+  // Review sorting method (Reverse way with time)
   reviews.sort((a, b) => b.time - a.time);
+
   return (
     <div className="w-11/12 mx-auto my-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
@@ -112,7 +116,7 @@ const SingleService = () => {
                 >
                   Login
                 </Link>{" "}
-                to add review
+                to add a review
               </p>
             )}
           </div>

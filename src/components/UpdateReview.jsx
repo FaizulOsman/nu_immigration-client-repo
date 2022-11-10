@@ -23,6 +23,7 @@ const UpdateReview = () => {
   const minute = date.getMinutes();
   const realTime = `${hour}:${minute}`;
 
+  // Handle update form
   const handleSubmit = (e) => {
     e.preventDefault();
     const text = e.target.text.value;
@@ -59,7 +60,7 @@ const UpdateReview = () => {
         }
       });
   };
-
+  // Handle Rating
   const handleReviewRating = (e) => {
     setRating(parseInt(e.target.value));
   };
