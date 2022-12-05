@@ -122,6 +122,7 @@ const Login = () => {
         setLoading(false);
       });
   };
+
   // Github Sign In
   const handleGithubSignIn = () => {
     setLoading(true);

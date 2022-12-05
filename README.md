@@ -1,4 +1,4 @@
-# NU-Immigration Starter Repository
+# NU-Immigration Repository
 
 # Project Name: NU-Immigration
 
